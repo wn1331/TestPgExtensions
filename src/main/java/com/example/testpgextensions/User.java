@@ -3,6 +3,7 @@ package com.example.testpgextensions;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 @Table(name = "users")
@@ -13,12 +14,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ColumnTransformer(forColumn = "name", read = "pgp_sym_decrypt(name, 'password')", write = "pgp_sym_encrypt(?, 'password')")
-//    @Column(name = "name", columnDefinition = "bytea")
+    @ColumnTransformer(forColumn = "name", read = "pgp_sym_decrypt(name, 'password')", write = "pgp_sym_encrypt(?, 'password')")
+    @Column(name = "name", columnDefinition = "bytea")
     private String name;
 
-//    @ColumnTransformer(forColumn = "password", read = "pgp_sym_decrypt(password, 'password')", write = "pgp_sym_encrypt(?, 'password')")
-//    @Column(name = "password", columnDefinition = "bytea")
+    @ColumnTransformer(forColumn = "password", read = "pgp_sym_decrypt(password, 'password')", write = "pgp_sym_encrypt(?, 'password')")
+    @Column(name = "password", columnDefinition = "bytea")
     private String password;
 
     public User(String name, String password) {
