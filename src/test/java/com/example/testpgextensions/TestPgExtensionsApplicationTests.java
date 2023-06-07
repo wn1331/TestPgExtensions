@@ -22,9 +22,9 @@ class TestPgExtensionsApplicationTests {
             //랜덤 비밀번호 생성
             String password = Integer.toString((int)(Math.random()*100000000));
             //계정 생성
-            Users usr = new Users(name,password);
+            Users user = new Users(name,password);
 
-            pgRepository.save(usr);
+            pgRepository.save(user);
         }
 
     }
