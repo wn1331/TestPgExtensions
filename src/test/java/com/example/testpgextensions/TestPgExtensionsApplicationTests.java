@@ -17,10 +17,14 @@ class TestPgExtensionsApplicationTests {
 
             //랜덤 이름 생성 라이브러리(Faker).
             Faker faker = new Faker();
-            //랜덤이름, 랜덤숫자 비밀번호의 계정 생성
-            PgRequestDTO dto = new PgRequestDTO(faker.name().fullName(),Integer.toString((int)(Math.random()*100000000)));
+            //랜덤 이름 생성
+            String name = faker.name().fullName();
+            //랜덤 비밀번호 생성
+            String password = Integer.toString((int)(Math.random()*100000000));
+            //계정 생성
+            Users usr = new Users(name,password);
 
-            pgRepository.save(dto.toEntity());
+            pgRepository.save(usr);
         }
 
     }

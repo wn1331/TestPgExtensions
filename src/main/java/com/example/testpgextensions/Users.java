@@ -17,14 +17,15 @@ public class Users {
     @Column(name = "password", columnDefinition = "bytea")
     private String password;
 
+    public Users() {
+
+    }
     public Users(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public Users() {
 
-    }
 
     public static Users createUser(String name,String password){
         return new Users(name,password);
