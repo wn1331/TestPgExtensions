@@ -1,10 +1,14 @@
 package com.example.testpgextensions;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.ColumnTransformer;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 @Entity
-public class Users {
+@Table(name = "users")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,17 +21,14 @@ public class Users {
 //    @Column(name = "password", columnDefinition = "bytea")
     private String password;
 
-    public Users() {
-
-    }
-    public Users(String name, String password) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
 
 
-    public static Users createUser(String name,String password){
-        return new Users(name,password);
+    public static User createUser(String name,String password){
+        return new User(name,password);
     }
 }
