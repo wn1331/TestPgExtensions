@@ -13,7 +13,7 @@ class TestPgExtensionsApplicationTests {
 
     @Test
     void createUser(){
-        for(int i = 0;i<10;i++){
+        for(int i = 0;i<1000;i++){
 
             //랜덤 이름 생성 라이브러리(Faker).
             Faker faker = new Faker();
